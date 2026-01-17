@@ -17,7 +17,24 @@ const nextConfig: NextConfig = {
         port: "8000",
         pathname: "/media/**",
       },
+      {
+         protocol: "http",
+         hostname: "13.49.49.188",
+         pathname: "/media/**",
+      }
     ],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://13.49.49.188/api/:path*',
+      },
+      {
+        source: '/media/:path*',
+        destination: 'http://13.49.49.188/media/:path*',
+      },
+    ];
   },
 };
 
